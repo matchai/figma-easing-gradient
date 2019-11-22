@@ -2,7 +2,7 @@ const chroma = require("chroma-js");
 const bezierEasing = require("bezier-easing");
 
 interface Color {
-  color: { r: number, g: number, b: number, a: number };
+  color: { r: number; g: number; b: number; a: number };
   position: number;
 }
 
@@ -15,13 +15,13 @@ const easeMap = {
 
 function main(): void {
   const selection = figma.currentPage.selection;
-  // console.log(selection)
-  if (selection.length !== 1 || !isShape(selection[0])) {
+  let node = <GeometryMixin>selection[0];
+
+  if (selection.length !== 1 || !isShape(node)) {
     figma.notify("Please select a shape with a gradient");
     figma.closePlugin();
   }
 
-  let node = <GeometryMixin>selection[0];
   const fillIndex = getFillIndexWithGradient(node);
   if (fillIndex === null) {
     figma.notify("Please select a shape with a gradient");
@@ -29,15 +29,8 @@ function main(): void {
   }
 
   const fill = node.fills[fillIndex];
-  if (fill.gradientStops.length !== 2) {
-    figma.notify("Please ensure that the shape's gradient has two colors");
-    figma.closePlugin();
-  }
-
-  // console.log(fill);
-
+  console.log("Fill:", fill);
   const newColors = easeGradient(fill, 15);
-  // console.log(newColors);
 
   applyColors(node, fillIndex, newColors);
 
@@ -49,7 +42,7 @@ main();
 function applyColors(node: GeometryMixin, fillIndex: number, colors: Color[]) {
   const tempFill = clone(node.fills);
   tempFill[fillIndex].gradientStops = colors;
-  node.fills = tempFill
+  node.fills = tempFill;
 }
 
 function clone(val) {
@@ -57,7 +50,10 @@ function clone(val) {
 }
 
 function easeGradient(fill: GradientPaint, colorSteps: number): Color[] {
-  const colors = fill.gradientStops.map(stop => stop.color);
+  const firstStop = fill.gradientStops[0];
+  const lastStop = fill.gradientStops[fill.gradientStops.length - 1];
+  const colors = [firstStop.color, lastStop.color];
+  console.log("Colors:", colors);
   const scale = chroma.scale(colors);
 
   const bezierCurve = easeMap.ease;
@@ -81,7 +77,7 @@ function easeGradient(fill: GradientPaint, colorSteps: number): Color[] {
 
 function getFillIndexWithGradient(node: GeometryMixin): number | null {
   if (!isShape(node)) return null;
-  
+
   // We can be assured that node.fills is not a symbol, since it is only a symbol
   // when it is "mixed", which is not possible when only one node is selected.
   const nodeFills = node.fills as readonly Paint[];
