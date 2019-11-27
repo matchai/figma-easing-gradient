@@ -1,8 +1,6 @@
 {
-  "name": "sandbox",
+  "name": "figma-easing-gradient",
   "version": "1.0.0",
-  "description": "",
-  "main": "code.js",
   "scripts": {
     "dev": "webpack --watch"
   },
@@ -12,16 +10,13 @@
     "bezier-easing": "^2.1.0",
     "chroma-js": "^2.1.0",
     "css-loader": "^3.1.0",
-    "html-webpack-inline-source-plugin": "0.0.10",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.23.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
-    "url-loader": "^2.1.0",
     "webpack": "^4.38.0",
     "webpack-cli": "^3.3.6"
   },
   "devDependencies": {
+    "@types/chroma-js": "^1.4.3",
     "@types/node": "^12.12.11"
   }
 }

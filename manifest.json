@@ -1,7 +1,6 @@
 {
   "name": "Easing Gradient",
-  "id": "738168449509241862",
+  "id": "781591244449826498",
   "api": "1.0.0",
-  "main": "dist/code.js",
-  "ui": "dist/ui.html"
+  "main": "dist/main.js"
 }
