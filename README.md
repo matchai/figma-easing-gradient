@@ -1,6 +1,4 @@
-<p align="center"><img width="100" align="center" src="logo.png"/></p>
-<h3 align="center">figma-easing-gradient</h3>
-<p align="center">Make <i>gorgeous</i> gradients in Figma ✨</p>
+<p align="center"><img align="center" src="media/banner.png"/></p>
 
 ---
 
