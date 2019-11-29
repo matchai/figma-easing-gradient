@@ -1,16 +1,34 @@
-# Webpack 
+<p align="center"><img width="100" align="center" src="logo.png"/></p>
+<h3 align="center">figma-easing-gradient</h3>
+<p align="center">Make <i>gorgeous</i> gradients in Figma ✨</p>
 
-<img src="../_screenshots/webpack.png" width="400" />
+---
 
-Creates rectangles. Demonstrates bundling plugin code using Webpack.
+## 🚀 Getting Started
 
-The main plugin code is in `src/code.ts`. The HTML for the UI is in
-`src/ui.html`, while the embedded JavaScript is in `src/ui.ts`.
+1. On a Figma document, select a shape with a gradient
+1. Go to _Plugins > Easing Gradient_
+1. Watch your gradient become smooth and beautiful
 
-These are compiled to files in `dist/`, which are what Figma will use to run
-your plugin.
+## 🔧 Development
 
-To build:
+1. Install dependencies
 
-    $ npm install
-    $ npx webpack
+   ```sh
+   npm install
+   ```
+
+1. Build the plugin
+
+   ```sh
+   npm run dev
+   ```
+
+1. In Figma, go to _Plugins > Manage Plugins_
+1. Click the **+** icon beside "Development"
+1. Provide Figma with `manifest.json` at the root of the repo
+
+## 📝 License
+
+Copyright © 2019-present, [Matan Kushner](https://github.com/matchai).<br>
+This project is [ISC](https://github.com/starship/starship/blob/master/LICENSE) licensed.
