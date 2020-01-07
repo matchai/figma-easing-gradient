@@ -39,4 +39,4 @@ Please check out these previous works that inspired the creation of figma-easing
 ## 📝 License
 
 Copyright © 2019-present, [Matan Kushner](https://github.com/matchai).<br>
-This project is [ISC](https://github.com/starship/starship/blob/master/LICENSE) licensed.
+This project is [ISC](./LICENSE) licensed.
