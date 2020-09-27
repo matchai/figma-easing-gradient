@@ -2,7 +2,8 @@
   "name": "figma-easing-gradient",
   "version": "1.0.0",
   "scripts": {
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "build": "webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
