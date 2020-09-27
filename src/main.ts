@@ -21,16 +21,12 @@ if (getFillIndexWithGradient(node) === null) {
 let fills = node.fills as readonly Paint[];
 
 fills.forEach((fill, fillIndex) => {
-  if (isGradient(fill)) {
-    console.log("Fill:", fill);
+  if (!isGradient(fill)) return;
 
-    const newColors = easeGradient(fill, 15);
-    console.log("New colors:", newColors);
-
-    applyColors(node, fillIndex, newColors);
-  }
-
-  if (fillIndex >= fills.length - 1) {
-    figma.closePlugin();
-  }
+  console.log("Fill:", fill);
+  const newColors = easeGradient(fill, 15);
+  console.log("New colors:", newColors);
+  applyColors(node, fillIndex, newColors);
 });
+
+figma.closePlugin();
