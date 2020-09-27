@@ -1,4 +1,4 @@
-import { isShape } from "./utils";
+import { isShape, isGradient } from "./utils";
 import {
   getFillIndexWithGradient,
   easeGradient,
@@ -13,17 +13,20 @@ if (selection.length !== 1 || !isShape(node)) {
   figma.closePlugin();
 }
 
-let fillIndex = getFillIndexWithGradient(node);
-if (fillIndex === null) {
+if (getFillIndexWithGradient(node) === null) {
   figma.notify("Please select a shape with a gradient");
   figma.closePlugin();
 }
 
-const fill = node.fills[fillIndex];
-console.log("Fill:", fill);
+let fills = node.fills as readonly Paint[];
 
-const newColors = easeGradient(fill, 15);
-console.log("New colors:", newColors);
+fills.forEach((fill, fillIndex) => {
+  if (!isGradient(fill)) return;
 
-applyColors(node, fillIndex, newColors);
+  console.log("Fill:", fill);
+  const newColors = easeGradient(fill, 15);
+  console.log("New colors:", newColors);
+  applyColors(node, fillIndex, newColors);
+});
+
 figma.closePlugin();
