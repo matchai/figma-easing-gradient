@@ -2,6 +2,8 @@
 
 ---
 
+> ⚠️ This project is archived in favor of the much more feature-rich alternative, [alexwidua/figma-easing-gradients](https://github.com/alexwidua/figma-easing-gradients) ✨
+
 ## 🚀 Getting Started
 
 1. On a Figma document, select a shape with a gradient
